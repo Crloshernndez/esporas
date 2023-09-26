@@ -1,5 +1,6 @@
 Django>=3.2.4,<3.3
 djangorestframework>=3.12.4,<3.13
+django-cors-headers
 django-environ==0.7.0
 django-filter==21.1
 django-autoslug==1.9.8
@@ -8,6 +9,9 @@ Pillow==8.3.2
 django-phonenumber-field==5.2.0
 phonenumbers==8.12.33
 psycopg2-binary==2.9.1
+djoser==2.1.0
+djangorestframework-simplejwt==4.8.0
+PyJWT==2.1.0
 redis==3.5.3
 celery==4.4.7
 django-celery-email==3.0.0
