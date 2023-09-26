@@ -8,7 +8,7 @@ class CustomAccountManager(BaseUserManager):
     """
     Custom user account manager for the UserAccount model.
     """
-    
+
     def email_validator(self, email):
         """
         Validates an email address.
@@ -45,19 +45,19 @@ class CustomAccountManager(BaseUserManager):
         """
         if not username:
             raise ValueError(_("Users must have a username"))
-        
+
         if email:
             email = self.normalize_email(email).lower()
             self.email_validator(email)
         else:
             raise ValueError(_("User must have an email address"))
-        
+
         user = self.model(username=username, email=email, **extra_fields)
         user.set_password(password)
-        
+
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
-        
+
         user.save(using=self._db)
         return user
 
@@ -80,10 +80,10 @@ class CustomAccountManager(BaseUserManager):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("is_active", True)
-        
+
         if not password:
             raise ValueError(_("Superusers must have a password"))
-        
+
         user, created = self.get_or_create(username=username, email=email, **extra_fields)
         if created:
             user.set_password(password)

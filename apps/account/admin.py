@@ -8,7 +8,7 @@ from .models import User
 
 class UserAdmin(BaseUserAdmin):
     ordering = ["email"]
-    
+
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = User
