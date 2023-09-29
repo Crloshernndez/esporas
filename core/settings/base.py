@@ -18,9 +18,6 @@ environ.Env.read_env(BASE_DIR / ".env")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
-
 ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
 # Application definition
@@ -135,7 +132,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -174,12 +171,16 @@ DJOSER = {
         'user_delete': 'djoser.serializers.UserDeleteSerializer', },
 }
 
+# EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('USER_EMAIL_HOST')
+EMAIL_HOST_PASSWORD = env('USER_EMAIL_PASSWORD')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "info@esporas.com"
+
 # LOGS
-import logging
-import logging.config
-
-from django.utils.log import DEFAULT_LOGGING
-
 logger = logging.getLogger(__name__)
 
 LOG_LEVEL = "INFO"

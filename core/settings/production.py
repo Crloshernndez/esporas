@@ -1,5 +1,7 @@
 from .base import *
 
+DEBUG = False
+
 # Database
 DATABASES = {
     'default': {

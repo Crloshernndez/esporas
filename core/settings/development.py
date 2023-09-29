@@ -1,13 +1,6 @@
 from .base import *
 
-# EMAIL
-EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST          = 'smtp.gmail.com'
-EMAIL_PORT          = 587
-EMAIL_HOST_USER     = env('USER_EMAIL_HOST')
-EMAIL_HOST_PASSWORD = env('USER_EMAIL_PASSWORD')
-EMAIL_USE_TLS       = True
-DEFAULT_FROM_EMAIL = "info@esporas.com"
+DEBUG = True
 
 # Database
 DATABASES = {
@@ -21,6 +14,6 @@ DATABASES = {
     }
 }
 
-CELERY_BROKER_URL = env("CELERY_BROKER")
-CELERY_RESULT_BACKEND = env("CELERY_BACKEND")
-CELERY_TIMEZONE = 'UTC'
+# CELERY_BROKER_URL = env("CELERY_BROKER")
+# CELERY_RESULT_BACKEND = env("CELERY_BACKEND")
+# CELERY_TIMEZONE = 'UTC'
