@@ -9,7 +9,7 @@ build:
 	docker compose up --build -d --remove-orphans
 
 up:
-	docker compose up
+	docker compose up -d
 
 down:
 	docker compose down
@@ -33,10 +33,10 @@ down-v:
 	docker compose down -v
 
 volume:
-	docker volume inspect esporas-src_postgres_data
+	docker volume inspect esporas_postgres_data
 
 esporas-db:
-	docker compose exec postgres-db psql --username=admin --dbname=esporas
+	docker compose exec postgres-db psql --username=postgres --dbname=esporas
 
 test:
 	docker compose exec api pytest -p no:warnings --cov=.
@@ -46,15 +46,6 @@ test-html:
 
 flake8:
 	docker compose exec api flake8 .
-
-black-check:
-	docker compose exec api black --check --exclude=migrations .
-
-black-diff:
-	docker compose exec api black --diff --exclude=migrations .
-
-black:
-	docker compose exec api black --exclude=migrations .
 
 isort-check:
 	docker compose exec api isort . --check-only --skip env --skip migrations
